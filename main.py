@@ -20,12 +20,12 @@ for j in range(len(keywords)):
     req = session.request('GET', f'https://www.google.com/search?q={keywords[j]}')
     cont = BeautifulSoup(req.data, 'html.parser')
     
-    sh.write(j, 0, keywords[j])
+    sh.write(0, j, keywords[j])
     items = cont.find_all('div', {'class': 'BNeawe s3v9rd AP7Wnd lRVwie'})
 
     for i in range(len(items)):
-        sh.write(j, i+1, items[i].text)
+        sh.write(i+1, j, items[i].text)
 
 
 print('Success, view the keywords.xls file.')
-excel.save('keywords.xls')
+excel.save(word + '.xls')
